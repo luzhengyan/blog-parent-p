@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--MyBatis配置文件-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mszlu.blogparent.dao.mapper.SysUserMapper">
+
+    <select id="findUserById" resultType="com.mszlu.blogparent.dao.pojo.SysUser" parameterType="long">
+       select nickname from ms_sys_user where id=#{id}
+   </select>
+
+
+
+
+
+
+
+    <select id="findUserByAccount" parameterType="string" resultType="com.mszlu.blogparent.dao.pojo.SysUser">
+select *
+from ms_sys_user
+where account = #{account};
+    </select>
+
+    <insert id="insertAll">
+        insert into ms_sys_user
+        (id, account,
+         avatar, create_date, deleted,
+         email, last_login, mobile_phone_number,
+         nickname, password, salt,
+         status)
+        values (#{id,jdbcType=NUMERIC}, #{account,jdbcType=VARCHAR},
+                #{avatar,jdbcType=VARCHAR}, #{createDate,jdbcType=NUMERIC}, #{deleted,jdbcType=NUMERIC},
+                #{email,jdbcType=VARCHAR}, #{lastLogin,jdbcType=NUMERIC}, #{mobilePhoneNumber,jdbcType=VARCHAR},
+                #{nickname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR},
+                #{status,jdbcType=VARCHAR})
+
+    </insert>
+
+</mapper>
